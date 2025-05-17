@@ -1,5 +1,5 @@
 # System
-**/node_modules
+/node_modules
 .idea/
 .vscode/
 **/.idea/
@@ -10,8 +10,8 @@
 **/uploads
 
 **/.env
-frontend/logs
-frontend/*.log
-frontend/npm-debug.log*
-frontend/.vscode/*
-frontend/!.vscode/extensions.json
+/logs
+/*.log
+/npm-debug.log*
+/.vscode/*
+/!.vscode/extensions.json
