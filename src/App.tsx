@@ -1,20 +1,33 @@
-import { useState } from "react";
-import { Button } from "./components/ui/button.tsx";
-
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import BaseLayout from "./layout/base.layout";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import { Toaster } from "react-hot-toast"
 const App = () => {
-    const [ count, setCount ] = useState<number>(0);
-    return (
-        <div>
-            <h1 className="text-3xl font-bold underline text-center text-red-500">
-                Ram Ram
-            </h1>
-            <p className="mt-4 ms-[25%] text-green-800">
-                Current Count: { count }
-                <Button onClick={(): void => setCount(count + 1)} className="cursor-pointer ml-3">
-                    Increment Count
-                </Button>
-            </p>
+  const browserRoutes = createBrowserRouter([
+    {
+      path: "/",
+      element: <BaseLayout />,
+      children: [
+        { path: "/", element: <Login />, },
+        { path: "/login", element: <Login />, },
+        { path: "/register", element: <Register />, },
+      ],
+    },
+    {
+      path: "/*",
+      element: (
+        <div className="flex text-4xl items-center justify-center">
+          NOT FOUND
         </div>
-    )
-}
+      ),
+    }
+  ]);
+  return (
+    <>
+      <RouterProvider router={browserRoutes} />
+      <Toaster />
+    </>
+  );
+};
 export default App;
